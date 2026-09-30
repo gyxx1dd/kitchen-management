@@ -7,10 +7,14 @@ from kitchen_management import settings
 class DishType(models.Model):
     name = models.CharField(max_length=255, unique=True)
 
+    def __str__(self) -> str:
+        return f"{self.name}"
 
 class Cook(AbstractUser):
     years_of_experience = models.PositiveIntegerField(default=0)
 
+    def __str__(self) -> str:
+        return f"{self.username}"
 
 class Dish(models.Model):
     name = models.CharField(max_length=255)
