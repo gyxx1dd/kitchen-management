@@ -1,0 +1,13 @@
+.sidebar {
+    width: 250px;
+}
+
+.sidebar .nav-link {
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.sidebar .nav-link:hover {
+    background: #b22222;
+    color: white !important;
+}
