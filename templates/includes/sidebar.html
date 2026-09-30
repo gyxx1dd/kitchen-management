@@ -1,0 +1,36 @@
+<aside class="sidebar bg-dark text-white vh-100 p-3 d-flex flex-column">
+  <h2 class="text-danger mb-4">Kitchen Management</h2>
+
+  <nav class="nav flex-column gap-2">
+    <a class="nav-link text-white" href="{% url 'kitchen:index' %}">
+      Home
+    </a>
+
+    <a class="nav-link text-white" href="#">
+      Dishes
+    </a>
+
+    <a class="nav-link text-white" href="#">
+      Dish Types
+    </a>
+
+    <a class="nav-link text-white" href="#">
+      Cooks
+    </a>
+  </nav>
+
+  <div class="sidebar-user mt-auto">
+    <hr>
+
+    <div class="mb-2">
+      <span>{{ user.username }}</span>
+    </div>
+
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger w-100">
+        Logout
+      </button>
+    </form>
+  </div>
+</aside>
