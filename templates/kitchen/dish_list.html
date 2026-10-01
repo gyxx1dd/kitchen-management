@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block content %}
+  <div class="container mt-5">
+  <h1 class="mb-4">Dishes <a href="{% url 'kitchen:dish-create' %}" class="btn btn-danger">+</a></h1>
+  {% include "includes/pagination.html" %}
+  <form action="" method="get" class="d-flex align-items-center gap-2">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit", value="🔎">
+  </form>
+
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Dish type</th>
+      <th>Cooks</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+
+    {% for dish in dish_list %}
+    <tr>
+      <td>{{ dish.name }}</td>
+      <td>{{ dish.description }}</td>
+      <td>{{ dish.price }}</td>
+      <td>{{ dish.dish_type.name }}</td>
+      <td>
+        {% for cook in dish.cooks.all %}
+          {{ cook.username }}
+        {% endfor %}
+      </td>
+      <td><a href="{% url 'kitchen:dish-update' dish.id%}">Update</a></td>
+      <td><a href="{% url 'kitchen:dish-delete' dish.id%}">Delete</a></td>
+    </tr>
+    {% endfor %}
+
+  </table>
+
+  </div>
+{% endblock %}
