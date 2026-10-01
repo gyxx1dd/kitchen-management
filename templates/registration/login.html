@@ -12,6 +12,10 @@
       {% csrf_token %}
       {{ form }}
       <input type="submit" value="Login">
+      <p>
+        Don't have an account?
+      <a href="{% url 'kitchen:register' %}">Create an account</a>
+      </p>
     </form>
   </div>
 {% endblock %}
