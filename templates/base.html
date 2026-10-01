@@ -17,15 +17,16 @@
     {% include "includes/navbar.html" %}
   {% endblock %}
 
+
   <main class="flex-grow-1">
   {% block content %}{% endblock %}
   </main>
 
-  {% block pagination %}
-  {% endblock %}
 
+  {% block footer %}
   <footer class="footer">
     <p>Kitchen Management © 2026</p>
   </footer>
+  {% endblock %}
 </body>
 </html>
