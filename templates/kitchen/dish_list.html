@@ -1,47 +1,76 @@
 {% extends "base.html" %}
-{% load crispy_forms_filters %}
 {% load static %}
+
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
+
 {% block content %}
   <div class="container mt-5">
-  <h1 class="mb-4">Dishes <a href="{% url 'kitchen:dish-create' %}" class="btn btn-danger">+</a></h1>
-  {% include "includes/pagination.html" %}
-  <form action="" method="get" class="d-flex align-items-center gap-2">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit", value="🔎">
-  </form>
 
-  <table class="table table-bordered table-hover">
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Dish type</th>
-      <th>Cooks</th>
-      <th>Update</th>
-      <th>Delete</th>
-    </tr>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="mb-0">Dishes</h1>
 
-    {% for dish in dish_list %}
-    <tr>
-      <td>{{ dish.name }}</td>
-      <td>{{ dish.description }}</td>
-      <td>{{ dish.price }}</td>
-      <td>{{ dish.dish_type.name }}</td>
-      <td>
-        {% for cook in dish.cooks.all %}
-          {{ cook.username }}
-        {% endfor %}
-      </td>
-      <td><a href="{% url 'kitchen:dish-update' dish.id%}">Update</a></td>
-      <td><a href="{% url 'kitchen:dish-delete' dish.id%}">Delete</a></td>
-    </tr>
-    {% endfor %}
+      <a href="{% url 'kitchen:dish-create' %}" class="btn btn-danger">
+        Add
+      </a>
+    </div>
 
-  </table>
+    <form action="" method="get" class="d-flex align-items-center gap-2 mb-4">
+      {{ form }}
+      <input type="submit" value="Search" class="btn btn-danger">
+    </form>
+
+    <div class="row g-4">
+      {% for dish in dish_list %}
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+
+              <h5 class="card-title">
+                {{ dish.name }}
+              </h5>
+
+              <p class="card-text">
+                {{ dish.description }}
+              </p>
+
+              <p class="mb-1">
+                <strong>Price:</strong> {{ dish.price }}
+              </p>
+
+              <p class="mb-1">
+                <strong>Type:</strong> {{ dish.dish_type.name }}
+              </p>
+
+              <p>
+                <strong>Cooks:</strong>
+                {% for cook in dish.cooks.all %}
+                  {{ cook.username }}{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                  No cooks
+                {% endfor %}
+              </p>
+
+              <div class="d-flex gap-2">
+                <a href="{% url 'kitchen:dish-update' dish.id %}"
+                   class="btn btn-outline-primary btn-sm">
+                  Update
+                </a>
+
+                <a href="{% url 'kitchen:dish-delete' dish.id %}"
+                   class="btn btn-outline-danger btn-sm">
+                  Delete
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% include "includes/pagination.html" %}
 
   </div>
 {% endblock %}

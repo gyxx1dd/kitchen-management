@@ -1,55 +1,76 @@
 {% extends "base.html" %}
-{% load crispy_forms_filters %}
 {% load static %}
+
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
+
 {% block content %}
   <div class="container mt-5">
 
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="mb-0">Cooks</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="mb-0">Cooks</h1>
 
-    <a href="{% url 'kitchen:cook-create' %}" class="btn btn-danger">
+      <a href="{% url 'kitchen:cook-create' %}" class="btn btn-danger">
         Add
-    </a>
-</div>
+      </a>
+    </div>
 
+    <form action="" method="get" class="d-flex align-items-center gap-2 mb-4">
+      {{ form }}
+      <input type="submit" value="Search" class="btn btn-danger">
+    </form>
 
-  <form action="" method="get" class="d-flex align-items-center gap-2">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Search" class="btn btn-danger">
-  </form>
+    <div class="row g-4">
+      {% for cook in cook_list %}
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
 
-  <table class="table table-bordered table-hover">
-    <tr>
-      <th>Username</th>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Years of experience</th>
-      <th>Dish</th>
-      <th>Update</th>
-      <th>Delete</th>
-    </tr>
+              <h5 class="card-title">
+                {{ cook.first_name }} {{ cook.last_name }}
+              </h5>
 
-    {% for cook in cook_list %}
-    <tr>
-      <td>{{ cook.username }}</td>
-      <td>{{ cook.first_name }}</td>
-      <td>{{ cook.last_name }}</td>
-      <td>{{ cook.years_of_experience }}</td>
-      <td>
-        {% for dish in cook.dishes.all %}
-          {{ dish.name }}{% if not forloop.last %}, {% endif %}
-        {% endfor %}
-      </td>
-      <td><a href="{% url 'kitchen:cook-update' cook.id%}">Update</a></td>
-      <td><a href="{% url 'kitchen:cook-delete' cook.id%}" class="text-danger">Delete</a></td>
-    </tr>
-    {% endfor %}
+              <p class="text-secondary mb-2">
+                @{{ cook.username }}
+              </p>
 
-  </table>
+              <p class="mb-2">
+                <strong>Experience:</strong>
+                {{ cook.years_of_experience }} years
+              </p>
+
+              <p class="mb-2">
+                <strong>Dishes:</strong>
+              </p>
+
+              <ul>
+                {% for dish in cook.dishes.all %}
+                  <li>{{ dish.name }}</li>
+                {% empty %}
+                  <li>No dishes assigned</li>
+                {% endfor %}
+              </ul>
+
+              <div class="d-flex gap-2 mt-3">
+                <a href="{% url 'kitchen:cook-update' cook.id %}"
+                   class="btn btn-outline-primary btn-sm">
+                  Update
+                </a>
+
+                <a href="{% url 'kitchen:cook-delete' cook.id %}"
+                   class="btn btn-outline-danger btn-sm">
+                  Delete
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
     {% include "includes/pagination.html" %}
+
   </div>
 {% endblock %}
