@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block content %}
+  <div class="container mt-5">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">Cooks</h1>
+
+    <a href="{% url 'kitchen:cook-create' %}" class="btn btn-danger">
+        Add
+    </a>
+</div>
+
+
+  <form action="" method="get" class="d-flex align-items-center gap-2">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Search" class="btn btn-danger">
+  </form>
+
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th>Username</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Years of experience</th>
+      <th>Dish</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+
+    {% for cook in cook_list %}
+    <tr>
+      <td>{{ cook.username }}</td>
+      <td>{{ cook.first_name }}</td>
+      <td>{{ cook.last_name }}</td>
+      <td>{{ cook.years_of_experience }}</td>
+      <td>
+        {% for dish in cook.dishes.all %}
+          {{ dish.name }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+      </td>
+      <td><a href="{% url 'kitchen:cook-update' cook.id%}">Update</a></td>
+      <td><a href="{% url 'kitchen:cook-delete' cook.id%}" class="text-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+
+  </table>
+    {% include "includes/pagination.html" %}
+  </div>
+{% endblock %}
