@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block content %}
+  <div class="container mt-5">
+  <h1 class="mb-4">DishType <a href="{% url 'kitchen:dish-type-create' %}" class="btn btn-danger">+</a></h1>
+  {% include "includes/pagination.html" %}
+  <form action="" method="get" class="d-flex align-items-center gap-2">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Search" class="btn btn-danger">
+  </form>
+
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th>Name</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+
+    {% for dish in dish_type_list %}
+    <tr>
+      <td>{{ dish.name }}</td>
+      <td><a href="{% url 'kitchen:dish-type-update' dish.id%}">Update</a></td>
+      <td><a href="{% url 'kitchen:dish-type-delete' dish.id%}" class="text-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+
+  </table>
+
+  </div>
+{% endblock %}
