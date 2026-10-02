@@ -28,3 +28,19 @@ class Dish(models.Model):
 
     def __str__(self) -> str:
         return f"{self.name}"
+
+
+class Table(models.Model):
+    number = models.PositiveIntegerField(unique=True)
+
+    def __str__(self):
+        return f"{self.number}"
+
+
+class Reservation(models.Model):
+    user = models.ForeignKey(Cook, on_delete=models.CASCADE,related_name="reservations")
+    table = models.ForeignKey(Table, on_delete=models.CASCADE, related_name="reservations")
+    date = models.DateField()
+    time_start = models.TimeField()
+    time_end = models.TimeField()
+    dishes = models.ManyToManyField(Dish, related_name="reservations")

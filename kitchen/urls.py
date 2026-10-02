@@ -1,9 +1,50 @@
 from django.urls import path
 
-from kitchen.views import index
+from kitchen.views import (index,
+                           RegisterView,
+                           DishListView,
+                           DishCreateView,
+                           DishUpdateView,
+                           DishDeleteView,
+                           DishTypeListView,
+                           DishTypeCreateView,
+                           DishTypeUpdateView,
+                           DishTypeDeleteView,
+                           CookListView,
+                           CookCreateView,
+                           CookUpdateView,
+                           CookDeleteView,
+                           TableListView,
+                           TableCreateView,
+                           TableUpdateView,
+                           TableDeleteView,
+                           ReservationListView,
+                           ReservationCreateView,
+                           ReservationDeleteView,
+                           )
 
 urlpatterns = [
-    path("", index, name="index")
+    path("", index, name="index"),
+    path("register/", RegisterView.as_view(), name="register"),
+    path("dish/", DishListView.as_view(), name="dish-list"),
+    path("dish/create/", DishCreateView.as_view(), name="dish-create"),
+    path("dish/update/<int:pk>/", DishUpdateView.as_view(), name="dish-update"),
+    path("dish/delete/<int:pk>/", DishDeleteView.as_view(), name="dish-delete"),
+    path("dish-type/", DishTypeListView.as_view(), name="dish-type-list"),
+    path("dish-type/create/", DishTypeCreateView.as_view(), name="dish-type-create"),
+    path("dish-type/update/<int:pk>/", DishTypeUpdateView.as_view(), name="dish-type-update"),
+    path("dish-type/delete/<int:pk>/", DishTypeDeleteView.as_view(), name="dish-type-delete"),
+    path("cook/", CookListView.as_view(), name="cook-list"),
+    path("cook/create", CookCreateView.as_view(), name="cook-create"),
+    path("cook/update/<int:pk>/", CookUpdateView.as_view(), name="cook-update"),
+    path("cook/delete/<int:pk>", CookDeleteView.as_view(), name="cook-delete"),
+    path("table/", TableListView.as_view(), name="table-list"),
+    path("table/create/", TableCreateView.as_view(), name="table-create"),
+    path("table/update/<int:pk>/", TableUpdateView.as_view(), name="table-update"),
+    path("table/delete/<int:pk>/", TableDeleteView.as_view(), name="table-delete"),
+    path("reservation/", ReservationListView.as_view(), name="reservation-list"),
+    path("reservation/create/", ReservationCreateView.as_view(), name="reservation-create"),
+    path("reservation/delete/<int:pk>", ReservationDeleteView.as_view(), name="reservation-delete"),
 ]
 
 
