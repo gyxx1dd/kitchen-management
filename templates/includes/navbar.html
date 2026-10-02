@@ -1,36 +1,48 @@
-<aside class="sidebar bg-dark text-white vh-100 p-3 d-flex flex-column">
-  <h2 class="text-danger mb-4">Kitchen Management</h2>
+<nav class="navbar navbar-dark bg-dark px-4">
 
-  <nav class="nav flex-column gap-2">
-    <a class="nav-link text-white" href="{% url 'kitchen:index' %}">
+  <a class="navbar-brand text-danger fw-bold"
+     href="{% url 'kitchen:index' %}">
+    Kitchen Management
+  </a>
+
+  <div class="d-flex gap-2">
+
+    <a class="btn btn-outline-light"
+       href="{% url 'kitchen:index' %}">
       Home
     </a>
 
-    <a class="nav-link text-white" href="#">
+    <a class="btn btn-outline-light" href="{% url 'kitchen:dish-list' %}">
       Dishes
     </a>
 
-    <a class="nav-link text-white" href="#">
+    <a class="btn btn-outline-light" href="{% url 'kitchen:dish-type-list' %}">
       Dish Types
     </a>
 
-    <a class="nav-link text-white" href="#">
+    <a class="btn btn-outline-light" href="{% url 'kitchen:cook-list' %}">
       Cooks
     </a>
-  </nav>
 
-  <div class="sidebar-user mt-auto">
-    <hr>
+    <a class="btn btn-outline-light"
+       href="{% url 'kitchen:table-list' %}">
+      Tables
+    </a>
 
-    <div class="mb-2">
-      <span>{{ user.username }}</span>
-    </div>
+    {% if not user.is_staff %}
+      <a class="btn btn-outline-light"
+         href="{% url 'kitchen:reservation-list' %}">
+        Reservations
+      </a>
+    {% endif %}
 
     <form method="post" action="{% url 'logout' %}">
       {% csrf_token %}
-      <button type="submit" class="btn btn-danger w-100">
+      <button type="submit" class="btn btn-danger">
         Logout
       </button>
     </form>
+
   </div>
-</aside>
+
+</nav>
