@@ -10,10 +10,11 @@
 
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h1 class="mb-0">Dish Types</h1>
-
+      {% if user.is_staff %}
       <a href="{% url 'kitchen:dish-type-create' %}" class="btn btn-danger">
         Add
       </a>
+      {% endif %}
     </div>
 
     <form action="" method="get" class="d-flex align-items-center gap-2 mb-4">
@@ -30,7 +31,7 @@
               <h5 class="card-title">
                 {{ dish.name }}
               </h5>
-
+              {% if user.is_staff %}
               <div class="d-flex gap-2 mt-3">
                 <a href="{% url 'kitchen:dish-type-update' dish.id %}"
                    class="btn btn-outline-primary btn-sm">
@@ -42,6 +43,7 @@
                   Delete
                 </a>
               </div>
+              {% endif %}
 
             </div>
           </div>
