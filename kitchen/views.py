@@ -228,3 +228,16 @@ class ReservationDeleteView(LoginRequiredMixin, generic.DeleteView):
 
     def get_queryset(self):
         return Reservation.objects.filter(user=self.request.user)
+
+
+class ReservationForAdminListView(LoginRequiredMixin, StaffRequiredMixin, generic.ListView):
+    model = Reservation
+    template_name = "kitchen/reservation_for_admin_list.html"
+    context_object_name = "reservation_list"
+
+
+class ReservationDeleteForAdminDeleteView(LoginRequiredMixin, StaffRequiredMixin, generic.DeleteView):
+    model = Reservation
+    context_object_name = "reservation_delete_for_admin"
+    template_name = "kitchen/reservation_delete_for_admin.html"
+    success_url = reverse_lazy("kitchen:reservation-admin-list")

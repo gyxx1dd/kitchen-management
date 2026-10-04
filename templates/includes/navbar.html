@@ -34,6 +34,11 @@
          href="{% url 'kitchen:reservation-list' %}">
         Reservations
       </a>
+      {% else %}
+        <a class="btn btn-outline-light"
+         href="{% url 'kitchen:reservation-admin-list' %}">
+        Reservations
+        </a>
     {% endif %}
 
     <form method="post" action="{% url 'logout' %}">

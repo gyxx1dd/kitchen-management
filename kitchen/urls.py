@@ -21,6 +21,8 @@ from kitchen.views import (index,
                            ReservationListView,
                            ReservationCreateView,
                            ReservationDeleteView,
+                           ReservationForAdminListView,
+                           ReservationDeleteForAdminDeleteView,
                            )
 
 urlpatterns = [
@@ -45,6 +47,8 @@ urlpatterns = [
     path("reservation/", ReservationListView.as_view(), name="reservation-list"),
     path("reservation/create/", ReservationCreateView.as_view(), name="reservation-create"),
     path("reservation/delete/<int:pk>", ReservationDeleteView.as_view(), name="reservation-delete"),
+    path("reservation/admin/list/", ReservationForAdminListView.as_view(), name="reservation-admin-list"),
+    path("reservation/delete/foradmin/<int:pk>/", ReservationDeleteForAdminDeleteView.as_view(), name="reservation-delete-for-admin"),
 ]
 
 
