@@ -1,8 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from kitchen_management import settings
-
+from django.conf import settings
 
 class DishType(models.Model):
     name = models.CharField(max_length=255, unique=True)
