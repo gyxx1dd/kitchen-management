@@ -1,0 +1,19 @@
+.card {
+    border-top: 4px solid #b22222;
+}
+
+.card h2 {
+    color: #b22222;
+    font-size: 36px;
+}
+
+.footer {
+    padding: 20px;
+    text-align: center;
+    background: #212529;
+    color: gray;
+}
+
+.footer p {
+    margin: 0;
+}

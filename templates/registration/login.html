@@ -1,0 +1,21 @@
+{% extends "base_for_auth.html" %}
+
+{% block css %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="login-container">
+    <h1>Login</h1>
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="Login">
+      <p>
+        Don't have an account?
+      <a href="{% url 'kitchen:register' %}">Create an account</a>
+      </p>
+    </form>
+  </div>
+{% endblock %}
