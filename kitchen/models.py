@@ -43,3 +43,6 @@ class Reservation(models.Model):
     time_start = models.TimeField()
     time_end = models.TimeField()
     dishes = models.ManyToManyField(Dish, related_name="reservations")
+
+    def __str__(self) -> str:
+        return self.user.username

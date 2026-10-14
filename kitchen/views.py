@@ -1,10 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http.request import HttpRequest
-from django.http.response import HttpResponse
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
+from django.views.generic import TemplateView
 
 from kitchen.forms import CookCreationForm, DishCreateForm, DishSearchForm, DishTypeCreateForm, DishTypeSearchForm, \
     CookCreateForm, CookUpdateForm, CookSearchForm, ReservationCreateForm
@@ -13,20 +11,17 @@ from kitchen.models import DishType, Cook, Dish, Table, Reservation
 from kitchen.services import if_table_available
 
 
-@login_required
-def index(request: HttpRequest) -> HttpResponse:
-    count_dish_type = DishType.objects.count()
-    count_cook = Cook.objects.count()
-    count_dish = Dish.objects.count()
+class IndexView(LoginRequiredMixin, TemplateView):
+    template_name = "kitchen/index.html"
 
-    context = {
-        "count_dish_type": count_dish_type,
-        "count_cook": count_cook,
-        "count_dish": count_dish,
-    }
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-    return render(request, "kitchen/index.html", context=context)
+        context["count_dish_type"] = DishType.objects.count()
+        context["count_cook"] = Cook.objects.count()
+        context["count_dish"] = Dish.objects.count()
 
+        return context
 
 class RegisterView(generic.CreateView):
     model = Cook
