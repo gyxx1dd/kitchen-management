@@ -1,0 +1,53 @@
+<nav class="navbar navbar-dark bg-dark px-4">
+
+  <a class="navbar-brand text-danger fw-bold"
+     href="{% url 'kitchen:index' %}">
+    Kitchen Management
+  </a>
+
+  <div class="d-flex gap-2">
+
+    <a class="btn btn-outline-light"
+       href="{% url 'kitchen:index' %}">
+      Home
+    </a>
+
+    <a class="btn btn-outline-light" href="{% url 'kitchen:dish-list' %}">
+      Dishes
+    </a>
+
+    <a class="btn btn-outline-light" href="{% url 'kitchen:dish-type-list' %}">
+      Dish Types
+    </a>
+
+    <a class="btn btn-outline-light" href="{% url 'kitchen:cook-list' %}">
+      Cooks
+    </a>
+
+    <a class="btn btn-outline-light"
+       href="{% url 'kitchen:table-list' %}">
+      Tables
+    </a>
+
+    {% if not user.is_staff %}
+      <a class="btn btn-outline-light"
+         href="{% url 'kitchen:reservation-list' %}">
+        Reservations
+      </a>
+      {% else %}
+        <a class="btn btn-outline-light"
+         href="{% url 'kitchen:reservation-admin-list' %}">
+        Reservations
+        </a>
+    {% endif %}
+
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">
+        Logout
+      </button>
+    </form>
+
+  </div>
+
+</nav>

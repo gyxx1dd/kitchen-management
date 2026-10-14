@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="fw-bold">Tables</h1>
+
+    {% if user.is_staff %}
+      <a href="{% url 'kitchen:table-create' %}" class="btn btn-danger">
+        Add table
+      </a>
+    {% endif %}
+  </div>
+
+  <div class="row g-4">
+
+    {% for table in table_list %}
+      <div class="col-md-4 col-lg-3">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center">
+
+            <h4 class="card-title">
+              Table №{{ table.number }}
+            </h4>
+
+            {% if user.is_staff %}
+              <div class="d-flex justify-content-center gap-2 mt-3">
+
+                <a href="{% url 'kitchen:table-update' table.pk %}"
+                   class="btn btn-primary">
+                  Update
+                </a>
+
+                <a href="{% url 'kitchen:table-delete' table.pk %}"
+                   class="btn btn-danger">
+                  Delete
+                </a>
+
+              </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+
+    {% empty %}
+      <div class="col-12">
+        <div class="alert alert-secondary text-center">
+          No tables available yet.
+        </div>
+      </div>
+    {% endfor %}
+  {% include "includes/pagination.html" %}
+  </div>
+</div>
+{% endblock %}

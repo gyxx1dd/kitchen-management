@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="mb-0">Cooks</h1>
+      {% if user.is_staff %}
+      <a href="{% url 'kitchen:cook-create' %}" class="btn btn-danger">
+        Add
+      </a>
+      {% endif %}
+    </div>
+
+    <form action="" method="get" class="d-flex align-items-center gap-2 mb-4">
+      {{ form }}
+      <input type="submit" value="Search" class="btn btn-danger">
+    </form>
+
+    <div class="row g-4">
+      {% for cook in cook_list %}
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+
+              <h5 class="card-title">
+                {{ cook.first_name }} {{ cook.last_name }}
+              </h5>
+
+              <p class="text-secondary mb-2">
+                @{{ cook.username }}
+              </p>
+
+              <p class="mb-2">
+                <strong>Experience:</strong>
+                {{ cook.years_of_experience }} years
+              </p>
+
+              <p class="mb-2">
+                <strong>Dishes:</strong>
+              </p>
+
+              <ul>
+                {% for dish in cook.dishes.all %}
+                  <li>{{ dish.name }}</li>
+                {% empty %}
+                  <li>No dishes assigned</li>
+                {% endfor %}
+              </ul>
+              {% if user.is_staff %}
+              <div class="d-flex gap-2 mt-3">
+                <a href="{% url 'kitchen:cook-update' cook.id %}"
+                   class="btn btn-outline-primary btn-sm">
+                  Update
+                </a>
+
+                <a href="{% url 'kitchen:cook-delete' cook.id %}"
+                   class="btn btn-outline-danger btn-sm">
+                  Delete
+                </a>
+              </div>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% include "includes/pagination.html" %}
+
+  </div>
+{% endblock %}

@@ -1,0 +1,366 @@
+[
+{
+    "model": "kitchen.dishtype",
+    "pk": 1,
+    "fields": {
+        "name": "BreadSuper"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 2,
+    "fields": {
+        "name": "Sweet"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 3,
+    "fields": {
+        "name": "Fish"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 5,
+    "fields": {
+        "name": "MilkProducts"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 6,
+    "fields": {
+        "name": "AlcoholProduct"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 7,
+    "fields": {
+        "name": "Tobacco"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 8,
+    "fields": {
+        "name": "Hot"
+    }
+},
+{
+    "model": "kitchen.cook",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$kcfrUFYuPxwSGh3pH6d16o$e1WxxhlieKKMNAwro8ekuMAlBqt3XsxEZXodgur7Hqg=",
+        "last_login": "2026-10-05T19:42:29.393Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-09-30T12:42:44Z",
+        "years_of_experience": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kitchen.cook",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$ehw5j9FHH29kAO6SuY3Dcq$IKESqc9pNE8/Z6f3ukjY06fPDoCJNe5EOBF/50JpUi0=",
+        "last_login": "2026-10-05T13:04:13.995Z",
+        "is_superuser": false,
+        "username": "vasia",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-10-01T08:38:27.962Z",
+        "years_of_experience": 2,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kitchen.cook",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$d9JujOhVhEUPDnAfYVnsUc$KCCm7ViHklCSkRsVcuX1dZjvwTSRL9quj1hSV7E8KcE=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Mykola",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-10-01T13:47:33.314Z",
+        "years_of_experience": 9,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kitchen.cook",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$h6dcTgoMcyqBvP1boT4zgl$tL3Z2kDHlvWBMOq3MWmPSaYDV4SrnJvYSiYW5QBqBuk=",
+        "last_login": "2026-10-01T14:29:13.896Z",
+        "is_superuser": false,
+        "username": "Taras",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-10-01T13:48:03.033Z",
+        "years_of_experience": 11,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kitchen.cook",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$mlgJi2AccxXTIVAGN9EkwT$BSoXRaZoWiL36RtbO3LPrbghpSsEl3VDFZhMpLatMjM=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Tipok",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-10-01T13:48:35.554Z",
+        "years_of_experience": 15,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kitchen.cook",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$IRwbi8bKwglFPNLWJ9nVDE$mIz6RqYUqw6gwK669eUjkWOeY211310dTd3wMBmC+9g=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Maksimka",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-10-01T14:07:22.754Z",
+        "years_of_experience": 21,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kitchen.cook",
+    "pk": 9,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$RgSvGSNom5rNmTt9OX4qFH$KcnlxRzLI93K5DH0AJ6Y8W6vzzgzsxxkU/SnYdzffBw=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "rodion",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-10-01T16:11:06.591Z",
+        "years_of_experience": 2,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kitchen.cook",
+    "pk": 10,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$JAOOdNEunoCTcP3UKsbJsu$4Im8Y5lyvE09mgJ7XQK02/odjs6jk++dycFQXj8Sh6A=",
+        "last_login": "2026-10-02T16:13:06.313Z",
+        "is_superuser": false,
+        "username": "taras228",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-10-02T16:12:29.650Z",
+        "years_of_experience": 0,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 3,
+    "fields": {
+        "name": "soup",
+        "description": "with seafood",
+        "price": "998.00",
+        "dish_type": 1,
+        "cooks": [
+            1,
+            9
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 4,
+    "fields": {
+        "name": "vegetables",
+        "description": "tomatoes, cucumber",
+        "price": "99.00",
+        "dish_type": 1,
+        "cooks": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 5,
+    "fields": {
+        "name": "Fruits",
+        "description": "banana, apple",
+        "price": "43.00",
+        "dish_type": 1,
+        "cooks": []
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 6,
+    "fields": {
+        "name": "Soup very spicy",
+        "description": "very spicy",
+        "price": "44.00",
+        "dish_type": 1,
+        "cooks": []
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 7,
+    "fields": {
+        "name": "Soup with brokoli",
+        "description": "no tasty",
+        "price": "23.00",
+        "dish_type": 1,
+        "cooks": []
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 8,
+    "fields": {
+        "name": "Spaghetti",
+        "description": "makaroni",
+        "price": "122.00",
+        "dish_type": 1,
+        "cooks": [
+            5
+        ]
+    }
+},
+{
+    "model": "kitchen.table",
+    "pk": 2,
+    "fields": {
+        "number": 1
+    }
+},
+{
+    "model": "kitchen.table",
+    "pk": 3,
+    "fields": {
+        "number": 2
+    }
+},
+{
+    "model": "kitchen.table",
+    "pk": 4,
+    "fields": {
+        "number": 3
+    }
+},
+{
+    "model": "kitchen.table",
+    "pk": 5,
+    "fields": {
+        "number": 4
+    }
+},
+{
+    "model": "kitchen.table",
+    "pk": 6,
+    "fields": {
+        "number": 5
+    }
+},
+{
+    "model": "kitchen.table",
+    "pk": 7,
+    "fields": {
+        "number": 6
+    }
+},
+{
+    "model": "kitchen.table",
+    "pk": 8,
+    "fields": {
+        "number": 7
+    }
+},
+{
+    "model": "kitchen.table",
+    "pk": 9,
+    "fields": {
+        "number": 8
+    }
+},
+{
+    "model": "kitchen.table",
+    "pk": 10,
+    "fields": {
+        "number": 9
+    }
+},
+{
+    "model": "kitchen.reservation",
+    "pk": 7,
+    "fields": {
+        "user": 2,
+        "table": 8,
+        "date": "2026-10-03",
+        "time_start": "18:00:00",
+        "time_end": "19:00:00",
+        "dishes": [
+            5
+        ]
+    }
+},
+{
+    "model": "kitchen.reservation",
+    "pk": 8,
+    "fields": {
+        "user": 2,
+        "table": 6,
+        "date": "2026-10-03",
+        "time_start": "18:00:00",
+        "time_end": "19:00:00",
+        "dishes": []
+    }
+}
+]
