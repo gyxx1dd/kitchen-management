@@ -7,7 +7,7 @@ and manage their own table reservations with selected dishes.
 
 ## Check it out!
 
-[Kitchen management project deployed to Render]([https://kitchen-management-tjs2.onrender.com/])
+[Kitchen management project deployed to Render](https://kitchen-management-tjs2.onrender.com/)
 
 ## Getting Started
 
