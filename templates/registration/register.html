@@ -1,0 +1,27 @@
+{% extends "base_for_auth.html" %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="register-container">
+
+    <h1>Create account</h1>
+
+    <form method="post" action="">
+      {% csrf_token %}
+
+      {{ form.as_p }}
+
+      <input type="submit" value="Register">
+    </form>
+
+    <p class="login-link">
+      Already have an account?
+      <a href="{% url 'login' %}">Log in</a>
+    </p>
+
+  </div>
+{% endblock %}

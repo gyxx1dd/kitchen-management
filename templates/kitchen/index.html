@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="container text-center mt-5">
+
+  <h1 class="mb-5">General info about kitchen</h1>
+
+  <div class="row justify-content-center g-4">
+
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2>{{ count_dish_type }}</h2>
+          <p class="mb-0">Dish Types</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2>{{ count_cook }}</h2>
+          <p class="mb-0">Cooks</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2>{{ count_dish }}</h2>
+          <p class="mb-0">Dishes</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}
